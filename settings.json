@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch(*)",
+      "WebFetch(*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "ask": [
+      "Read(~/Desktop/**)",
+      "Read(~/Documents/**)",
+      "Read(~/Downloads/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(id_rsa*)",
+      "Read(*.pem)",
+      "Read(~/.aws/credentials)",
+      "Read(secrets/**)",
+      "Read(~/.npmrc)",
+      "Edit(~/.zshrc)",
+      "Edit(~/.zshenv)",
+      "Edit(~/.bashrc)",
+      "Edit(~/.bash_profile)",
+      "Edit(~/.profile)",
+      "Edit(~/.gitconfig)",
+      "Bash(sudo *)",
+      "Bash(rm -rf *)",
+      "Bash(git push --force:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -f:*)"
+    ],
+    "defaultMode": "acceptEdits"
+  }
+}
