@@ -29,6 +29,30 @@ cp CLAUDE.md settings.json ~/.claude/
 
 Pak **restartuj Claude Code** a je to.
 
+## Skilly (volitelné)
+
+Ve složce `skills/` je pár hotových **dovedností** (skill = návod, který Claude sám vytáhne, když se hodí). Nejsou povinné. Když nějakou chceš, zkopíruj její složku do `~/.claude/skills/`:
+
+```bash
+mkdir -p ~/.claude/skills
+cp -r skills/contract-review ~/.claude/skills/
+cp -r skills/youtube-research ~/.claude/skills/
+```
+
+- **`contract-review`**: kontrola smlouvy z pozice protistrany (rizika, nevýhodná ustanovení, co chybí). Funguje rovnou.
+- **`youtube-research`**: najde k tématu videa, stáhne přepisy a vytěží z nich znalosti. Potřebuje nástroj `yt-dlp` (`brew install yt-dlp` na macOS, nebo `pip install yt-dlp`).
+
+### NotebookLM (extra)
+
+Skill na ovládání Google NotebookLM (podcasty, kvízy, reporty z tvých zdrojů) tady záměrně **nekopírujeme**, je to cizí balík, který se sám aktualizuje. Nainstaluj si ho přímo:
+
+```bash
+pip install notebooklm-py
+notebooklm skill install
+```
+
+Pak ho v Claude Code vyvoláš třeba „udělej mi podcast o…". Detaily: [notebooklm-py](https://github.com/teng-lin/notebooklm-py).
+
 ## Důležité
 
 Tohle je **rozumný a bezpečný začátek**, ne neprůstřelná bezpečnost. `deny` pravidla blokují přístup i v automatickém režimu, ale chytrý útok přes vlastní skript nezastaví (na to je až sandbox). Uprav si konfiguraci podle sebe, klidně přidávej vlastní pravidla přes „Allow always" v promptu.

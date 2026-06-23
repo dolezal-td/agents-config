@@ -31,9 +31,11 @@ Pokud tohle čteš jako agent v nové session, který má pokračovat v práci n
 
 **Jádro doladěno (#5):** opraven tvar Bash deny patternů (`:*`), přidán `rm -fr`, do `CLAUDE.md` přidána zásada „nepřitakávej", README vysvětluje, že `CLAUDE.md` je šablona k přepsání. Struktura zamčena na jednu úroveň.
 
+**První skilly (#4):** `skills/contract-review` (kopie, čistá, soběstačná) a `skills/youtube-research` (přepsán na soběstačný: yt-dlp místo lokálního skriptu, Tavily volitelný, výstup do `./` místo vaultu). `notebooklm` se NEkopíruje, jen návod v README na `pip install notebooklm-py` (cizí balík, který se sám aktualizuje). README má sekci „Skilly (volitelné)".
+
 ## Co dál
 
-1. **Skills:** doplnit `skills/` o malou sadu **obecných, neosobních** skills (typu research, psaní promptů, práce s gitem, tvorba PRD apod.). **Každý skill před zveřejněním projít a vystřihnout osobní reference** (voice, klienti, cesty do vaultu, konkrétní účty). Zdroj kandidátů: `~/.claude/skills/` na stroji autora. Instalace u uživatele = kopie do `~/.claude/skills/`.
+1. **Skills:** doplnit `skills/` o malou sadu **obecných, neosobních** skills (typu research, psaní promptů, práce s gitem, tvorba PRD apod.). **Každý skill před zveřejněním projít a vystřihnout osobní reference** (voice, klienti, cesty do vaultu, konkrétní účty). Zdroj kandidátů: `~/.claude/skills/` na stroji autora. Instalace u uživatele = kopie do `~/.claude/skills/`. Hotovo z #4: contract-review, youtube-research, notebooklm. Zbývá dev-balík (#1) a session-log/end-of-day (#2).
 2. **Pluginy:** doporučit pár public pluginů. Oficiální (`claude-plugins-official`) fungují rovnou přes `enabledPlugins`; non-oficiální marketplaces je nutné nejdřív přidat (`claude plugin marketplace add …`), takže to buď zdokumentovat v README, nebo nechat na pozdější vedený onboarding.
 3. ~~Doladit `CLAUDE.md` a `settings.json`~~ → **hotovo (#5).**
 4. Zvážit variantu `AGENTS.md` jako orientaci i pro Codex (stejný obsah, jiný formát konzumace).
