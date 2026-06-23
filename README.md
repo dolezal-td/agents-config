@@ -86,6 +86,17 @@ notebooklm skill install
 
 Pak ho v Claude Code vyvoláš třeba „udělej mi podcast o…". Detaily: [notebooklm-py](https://github.com/teng-lin/notebooklm-py).
 
+### last30days (extra)
+
+Skill, který prozkoumá libovolné téma za posledních 30 dní napříč Redditem, X a webem a sepíše z toho přehled. Existuje jako hotový open-source plugin, takže ho **nekopírujeme**, nainstaluj si ho přímo v Claude Code:
+
+```
+/plugin marketplace add mvanhorn/last30days-skill
+/plugin install last30days
+```
+
+Marketplace se stará i o aktualizace. Detaily: [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill).
+
 ## Důležité
 
 Tohle je **rozumný a bezpečný začátek**, ne neprůstřelná bezpečnost. `deny` pravidla blokují přístup i v automatickém režimu, ale chytrý útok přes vlastní skript nezastaví (na to je až sandbox). Uprav si konfiguraci podle sebe, klidně přidávej vlastní pravidla přes „Allow always" v promptu.
