@@ -4,7 +4,7 @@ Doporučená výchozí konfigurace **Claude Code** pro začátečníky, od [AI p
 
 ## Co je uvnitř
 
-- **`CLAUDE.md`**: globální instrukce: mluv česky, bez žargonu, ptej se, neimprovizuj, nedělej nevratné věci bez svolení.
+- **`CLAUDE.md`**: globální instrukce: mluv česky, bez žargonu, ptej se, neimprovizuj, nedělej nevratné věci bez svolení. Je psaný v první osobě, jako bys ho diktoval ty: klidně si ho přepiš pod sebe, hlavně sekci **Kdo jsem** (jestli nejsi začátečník nebo děláš něco jiného než já).
 - **`settings.json`**: bezpečná výchozí pravidla:
   - **čtení souborů a web** smí bez ptaní,
   - **osobní složky** (Desktop, Dokumenty, Stažené) a **`.env`** se nejdřív zeptá,

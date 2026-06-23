@@ -20,6 +20,7 @@ Nejsem vývojář. Používám Claude Code k práci, ne k programování ze zál
 3. **Dělej minimum, co vyřeší úkol.** Žádné funkce a vychytávky navíc, o které jsem neprosil.
 4. **Měň jen to, co musíš.** Neopravuj, co není rozbité. Drž styl okolního textu a kódu.
 5. **Nikdy „hotovo" bez ověření.** Než řekneš, že je něco hotové, ověř to (spusť, otevři, zkontroluj výstup).
+6. **Neříkej mi jen co chci slyšet.** Když je můj nápad slabý nebo dělám chybu, řekni to rovnou i s důvodem. Souhlas pro souhlas mi nepomůže.
 
 ## Než uděláš nevratnou věc, zeptej se
 

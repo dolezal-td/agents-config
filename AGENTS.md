@@ -21,17 +21,21 @@ Pokud tohle čteš jako agent v nové session, který má pokračovat v práci n
    - `deny`: tajnosti (`~/.ssh`, klíče, `~/.aws/credentials`, `secrets/**`, `~/.npmrc`), destrukce (`sudo`, `rm -rf`, force push, `reset --hard`), zápis do shell/git rc (`~/.zshrc` aj.).
    - `defaultMode: acceptEdits` (plynulé úpravy souborů).
    - **Cesty kotvit `~/` (domov) nebo bare/gitignore vzorem, NIKDY `./`** (to platí jen z aktuální složky, takže deny pravidlo s `./` je děravé).
+   - **`Bash(...)` pravidla = prefix forma s dvojtečkou:** `Bash(rm -rf:*)`, ne `Bash(rm -rf *)`. Glob s mezerou nematchuje spolehlivě (ověřeno v docs). `defaultMode` patří DOVNITŘ objektu `permissions`, ne na top-level.
 4. **Bezpečnost:** `deny` pravidla jsou baseline, ne neprůstřelná hradba. `cat`/`sed` čtení blokují, ale vlastní skript (`python -c "open(...)"`) je obejde. Na to je až sandbox (OS-level). Pro dárek baseline stačí, je to přiznáno v README.
+5. **Struktura `skills/` = jedna úroveň.** Žádné dělení na „jádro vs power pack". Všechny skilly v jednom adresáři, README odliší co je pro koho. (Rozhodnuto u #5.)
 
 ## Stav
 
 **v1 LIVE:** `CLAUDE.md` + `settings.json` + `README.md`, public. Bezpečnostní a permissions vrstva hotová.
 
+**Jádro doladěno (#5):** opraven tvar Bash deny patternů (`:*`), přidán `rm -fr`, do `CLAUDE.md` přidána zásada „nepřitakávej", README vysvětluje, že `CLAUDE.md` je šablona k přepsání. Struktura zamčena na jednu úroveň.
+
 ## Co dál
 
 1. **Skills:** doplnit `skills/` o malou sadu **obecných, neosobních** skills (typu research, psaní promptů, práce s gitem, tvorba PRD apod.). **Každý skill před zveřejněním projít a vystřihnout osobní reference** (voice, klienti, cesty do vaultu, konkrétní účty). Zdroj kandidátů: `~/.claude/skills/` na stroji autora. Instalace u uživatele = kopie do `~/.claude/skills/`.
 2. **Pluginy:** doporučit pár public pluginů. Oficiální (`claude-plugins-official`) fungují rovnou přes `enabledPlugins`; non-oficiální marketplaces je nutné nejdřív přidat (`claude plugin marketplace add …`), takže to buď zdokumentovat v README, nebo nechat na pozdější vedený onboarding.
-3. **Doladit `CLAUDE.md` a `settings.json`** do skvělého stavu (jsou to dvě nejdůležitější věci v repu).
+3. ~~Doladit `CLAUDE.md` a `settings.json`~~ → **hotovo (#5).**
 4. Zvážit variantu `AGENTS.md` jako orientaci i pro Codex (stejný obsah, jiný formát konzumace).
 
 ## Vazby

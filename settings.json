@@ -31,8 +31,9 @@
       "Edit(~/.bash_profile)",
       "Edit(~/.profile)",
       "Edit(~/.gitconfig)",
-      "Bash(sudo *)",
-      "Bash(rm -rf *)",
+      "Bash(sudo:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
       "Bash(git push --force:*)",
       "Bash(git reset --hard:*)",
       "Bash(git clean -f:*)"

@@ -1,0 +1,3 @@
+# Lokální / osobní, do public repa nepatří
+.specstory/
+.DS_Store
