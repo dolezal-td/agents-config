@@ -33,9 +33,11 @@ Pokud tohle čteš jako agent v nové session, který má pokračovat v práci n
 
 **První skilly (#4):** `skills/contract-review` (kopie, čistá, soběstačná) a `skills/youtube-research` (přepsán na soběstačný: yt-dlp místo lokálního skriptu, Tavily volitelný, výstup do `./` místo vaultu). `notebooklm` se NEkopíruje, jen návod v README na `pip install notebooklm-py` (cizí balík, který se sám aktualizuje). README má sekci „Skilly (volitelné)".
 
+**session-log + end-of-day (#2):** přepsány od základu na generické. Default log `~/.claude/logs/YYYY-MM-DD.md` (mimo projekty, funguje pro oba). session-log rekapituluje z aktuální konverzace; end-of-day čte nativní CC transkripty `~/.claude/projects/<projekt>/*.jsonl` napříč projekty + git (cwd z transkriptů). Žádný SpecStory/vault/Gmail/Calendar/Todoist/wiki/STATUS/klas tagy/wikilinky. jq jednořádky ověřené na reálném `.jsonl` (klíče type/timestamp/cwd/message.content; filtr na string content vynechá tool noise).
+
 ## Co dál
 
-1. **Skills:** doplnit `skills/` o malou sadu **obecných, neosobních** skills (typu research, psaní promptů, práce s gitem, tvorba PRD apod.). **Každý skill před zveřejněním projít a vystřihnout osobní reference** (voice, klienti, cesty do vaultu, konkrétní účty). Zdroj kandidátů: `~/.claude/skills/` na stroji autora. Instalace u uživatele = kopie do `~/.claude/skills/`. Hotovo z #4: contract-review, youtube-research, notebooklm. Zbývá dev-balík (#1) a session-log/end-of-day (#2).
+1. **Skills:** doplnit `skills/` o malou sadu **obecných, neosobních** skills (typu research, psaní promptů, práce s gitem, tvorba PRD apod.). **Každý skill před zveřejněním projít a vystřihnout osobní reference** (voice, klienti, cesty do vaultu, konkrétní účty). Zdroj kandidátů: `~/.claude/skills/` na stroji autora. Instalace u uživatele = kopie do `~/.claude/skills/`. Hotovo z #4: contract-review, youtube-research, notebooklm. Hotovo z #2: session-log, end-of-day (generický rework). Zbývá dev-balík (#1).
 2. **Pluginy:** doporučit pár public pluginů. Oficiální (`claude-plugins-official`) fungují rovnou přes `enabledPlugins`; non-oficiální marketplaces je nutné nejdřív přidat (`claude plugin marketplace add …`), takže to buď zdokumentovat v README, nebo nechat na pozdější vedený onboarding.
 3. ~~Doladit `CLAUDE.md` a `settings.json`~~ → **hotovo (#5).**
 4. Zvážit variantu `AGENTS.md` jako orientaci i pro Codex (stejný obsah, jiný formát konzumace).

@@ -37,10 +37,14 @@ Ve složce `skills/` je pár hotových **dovedností** (skill = návod, který C
 mkdir -p ~/.claude/skills
 cp -r skills/contract-review ~/.claude/skills/
 cp -r skills/youtube-research ~/.claude/skills/
+cp -r skills/session-log ~/.claude/skills/
+cp -r skills/end-of-day ~/.claude/skills/
 ```
 
 - **`contract-review`**: kontrola smlouvy z pozice protistrany (rizika, nevýhodná ustanovení, co chybí). Funguje rovnou.
 - **`youtube-research`**: najde k tématu videa, stáhne přepisy a vytěží z nich znalosti. Potřebuje nástroj `yt-dlp` (`brew install yt-dlp` na macOS, nebo `pip install yt-dlp`).
+- **`session-log`**: na konci práce zapíše stručně, co se udělalo, do denního logu `~/.claude/logs/YYYY-MM-DD.md`, ať se to dá dohledat. Funguje rovnou.
+- **`end-of-day`**: večerní úklid. Projde všechny dnešní Claude Code session napříč projekty i git a zkonsoliduje je do denního logu, plus drží seznam „otevřených smyček" (co zbývá dotáhnout). Funguje rovnou.
 
 ### NotebookLM (extra)
 
