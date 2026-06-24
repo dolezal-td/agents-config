@@ -1,11 +1,6 @@
 ---
 name: contract-review
-description: >
-  Hloubková kontrola smluv z pozice protistrany. Kontroluje správnost, vnitřní
-  konzistenci, soulad s legislativou a nevýhodná ustanovení. Použij když uživatel
-  předloží smlouvu (PDF, DOCX, text) ke kontrole, revizi nebo analýze rizik.
-  Triggery: zkontroluj smlouvu, review smlouvy, projdi smlouvu, analýza smlouvy,
-  co říkáš na tuhle smlouvu, je ta smlouva ok.
+description: Hloubková kontrola smluv z pozice protistrany. Kontroluje správnost, vnitřní konzistenci, soulad s legislativou a nevýhodná ustanovení. Použij když uživatel předloží smlouvu (PDF, DOCX, text) ke kontrole, revizi nebo analýze rizik. Triggery: zkontroluj smlouvu, review smlouvy, projdi smlouvu, analýza smlouvy, co říkáš na tuhle smlouvu, je ta smlouva ok.
 ---
 
 # Kontrola smlouvy

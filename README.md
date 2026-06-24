@@ -9,7 +9,7 @@ Doporučená výchozí konfigurace **Claude Code** pro začátečníky, od [AI p
   - **čtení souborů a web** smí bez ptaní,
   - **osobní složky** (Desktop, Dokumenty, Stažené) a **`.env`** se nejdřív zeptá,
   - **nebezpečné věci** (mazání přes `rm -rf`, force push, `sudo`, čtení SSH klíčů a hesel, přepis shell configu) jsou zakázané.
-  - Spouští se v režimu „accept edits": úpravy souborů jdou plynule, ale spuštění příkazů a citlivé akce se hlídají.
+  - Spouští se v režimu „accept edits“: úpravy souborů jdou plynule, ale spuštění příkazů a citlivé akce se hlídají.
 
 ## Jak si to nalít
 
@@ -44,11 +44,20 @@ cp -r skills/end-of-day ~/.claude/skills/
 - **`contract-review`**: kontrola smlouvy z pozice protistrany (rizika, nevýhodná ustanovení, co chybí). Funguje rovnou.
 - **`youtube-research`**: najde k tématu videa, stáhne přepisy a vytěží z nich znalosti. Potřebuje nástroj `yt-dlp` (`brew install yt-dlp` na macOS, nebo `pip install yt-dlp`).
 - **`session-log`**: na konci práce zapíše stručně, co se udělalo, do denního logu `~/.claude/logs/YYYY-MM-DD.md`, ať se to dá dohledat. Funguje rovnou.
-- **`end-of-day`**: večerní úklid. Projde všechny dnešní Claude Code session napříč projekty i git a zkonsoliduje je do denního logu, plus drží seznam „otevřených smyček" (co zbývá dotáhnout). Funguje rovnou.
+- **`end-of-day`**: večerní úklid. Projde všechny dnešní Claude Code session napříč projekty i git a zkonsoliduje je do denního logu, plus drží seznam „otevřených smyček“ (co zbývá dotáhnout). Potřebuje nástroj `jq` na čtení záznamů konverzací (`brew install jq` na macOS, jinak [stáhni jq](https://jqlang.github.io/jq/download/)). Bez něj skill tiše přeskočí konverzace.
 
 ### Vývojové skilly (pro pokročilé)
 
 Tahle sada je pro lidi, kteří s Claude Code reálně programují. Je to ucelený vývojový postup: od nápadu přes návrh, rozdělení práce a testy až po Git. Jádro je router `vyvoj`, který ostatní volá ve správném pořadí.
+
+**Co k tomu nejdřív potřebuješ:**
+
+- **Plugin `superpowers`** (povinné pro plný postup): `vyvoj`, `testing-strategy` a `git-workflow` se opírají o skilly z tohoto pluginu (TDD, brainstorming, code review, Git worktrees). V Claude Code napiš `/plugin install superpowers@claude-plugins-official` a restartuj. Detaily: [obra/superpowers](https://github.com/obra/superpowers).
+- **GitHub CLI `gh`** (povinné pro práci s issues): `write-a-prd`, `prd-to-issues` a `git-workflow` zakládají a spravují GitHub Issues. [Instalace gh](https://cli.github.com/).
+- **Context7 MCP** (volitelné, doporučené): `vyvoj`, `research`, `deep-research` a `start-development` z něj tahají aktuální dokumentaci knihoven, ať Claude nepracuje ze zastaralé paměti.
+- **Search MCP typu Tavily** (volitelné): `research` a `deep-research` ho umí využít pro hlubší pokrytí. Fungují i bez něj přes běžný web search.
+
+Pak zkopíruj skilly:
 
 ```bash
 cp -r skills/vyvoj skills/grill-me skills/research skills/deep-research ~/.claude/skills/
@@ -68,13 +77,6 @@ Co který dělá:
 - **`git-workflow`**: strukturovaný Git postup (branch, issue, commit, merge) s vysvětlením proč.
 - **`start-development`**: inicializace nového vývojového projektu.
 
-**Co k tomu potřebuješ:**
-
-- **Plugin `superpowers`** (povinné pro plný postup): `vyvoj`, `testing-strategy` a `git-workflow` se opírají o skilly z tohoto pluginu (TDD, brainstorming, code review, Git worktrees). V Claude Code napiš `/plugin install superpowers@claude-plugins-official` a restartuj. Detaily: [obra/superpowers](https://github.com/obra/superpowers).
-- **GitHub CLI `gh`** (povinné pro práci s issues): `write-a-prd`, `prd-to-issues` a `git-workflow` zakládají a spravují GitHub Issues. [Instalace gh](https://cli.github.com/).
-- **Context7 MCP** (volitelné, doporučené): `vyvoj`, `research`, `deep-research` a `start-development` z něj tahají aktuální dokumentaci knihoven, ať Claude nepracuje ze zastaralé paměti.
-- **Search MCP typu Tavily** (volitelné): `research` a `deep-research` ho umí využít pro hlubší pokrytí. Fungují i bez něj přes běžný web search.
-
 ### NotebookLM (extra)
 
 Skill na ovládání Google NotebookLM (podcasty, kvízy, reporty z tvých zdrojů) tady záměrně **nekopírujeme**, je to cizí balík, který se sám aktualizuje. Nainstaluj si ho přímo:
@@ -84,7 +86,7 @@ pip install notebooklm-py
 notebooklm skill install
 ```
 
-Pak ho v Claude Code vyvoláš třeba „udělej mi podcast o…". Detaily: [notebooklm-py](https://github.com/teng-lin/notebooklm-py).
+Pak ho v Claude Code vyvoláš třeba „udělej mi podcast o…“. Detaily: [notebooklm-py](https://github.com/teng-lin/notebooklm-py).
 
 ### last30days (extra)
 
@@ -99,4 +101,4 @@ Marketplace se stará i o aktualizace. Detaily: [mvanhorn/last30days-skill](http
 
 ## Důležité
 
-Tohle je **rozumný a bezpečný začátek**, ne neprůstřelná bezpečnost. `deny` pravidla blokují přístup i v automatickém režimu, ale chytrý útok přes vlastní skript nezastaví (na to je až sandbox). Uprav si konfiguraci podle sebe, klidně přidávej vlastní pravidla přes „Allow always" v promptu.
+Tohle je **rozumný a bezpečný začátek**, ne neprůstřelná bezpečnost. `deny` pravidla blokují přístup i v automatickém režimu, ale chytrý útok přes vlastní skript nezastaví (na to je až sandbox). Uprav si konfiguraci podle sebe, klidně přidávej vlastní pravidla přes „Allow always“ v promptu.
